@@ -58,7 +58,7 @@
           }
         },
         methods: {
-            submitHandler () {
+           async submitHandler () {
                 console.log(this.$v.password)
                 if (this.$v.$invalid) {
                     this.$v.$touch()
@@ -68,8 +68,13 @@
                     email: this.email,
                     password: this.password
                 }
-                console.log(formData)
-                this.$router.push('/')
+                try {
+                    await this.$store.dispatch('login', formData)
+                    this.$router.push('/')
+                }catch (e) {
+                    console.log(e)
+                    throw e
+                }
             }
         }
     }
