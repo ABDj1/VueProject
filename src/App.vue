@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    {{ layout }}
     <component :is="layout">
 
 
