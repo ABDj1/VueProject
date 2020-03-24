@@ -89,8 +89,13 @@
                     password: this.password,
                     name: this.name
                 }
-                console.log(fromData)
-                this.$router.push('/')
+                try {
+                    this.$store.dispatch('register', fromData)
+                    this.$router.push('/')
+                }catch (e) {
+                    console.log(e)
+                    throw e
+                }
             }
         }
     }
