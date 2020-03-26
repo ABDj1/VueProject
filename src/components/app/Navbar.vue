@@ -11,7 +11,7 @@
             <ul class="right hide-on-small-and-down">
                 <li>
                     <a class="dropdown-trigger black-text" href="#" data-target="dropdown" ref="dropdown">
-                        USER NAME
+                        {{name}}
                         <i class="material-icons right">arrow_drop_down</i>
                     </a>
 
@@ -49,11 +49,16 @@
                 this.$router.push('/login?message=logout')
             }
         },
+        computed: {
+          name(){
+              return this.$store.getters.info.name
+          }
+        },
         mounted() {
            this.interval = setInterval(() => {
                 this.date = new Date()
 
-            }, 1000)
+            }, 10000);
             this.dropdown = M.Dropdown.init(this.$refs.dropdown, {
                 constrainWidth: true
             })

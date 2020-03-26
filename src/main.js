@@ -4,19 +4,25 @@ import App from './App.vue'
 import './registerServiceWorker'
 import router from './router/index'
 import dateFilter from "./filters/date.filters"
+import currencyFilter from "./filters/currency.filter"
 import messagePlugin from '@/utils/message.plugin'
+import tooltipDirective from '@/directives/tooltip.directive'
 import store from './store'
 import 'materialize-css/dist/js/materialize.min'
-
+import Loader from "./components/app/Loader";
 import firebase from 'firebase/app/dist/index.cjs'
 import 'firebase/auth'
 import 'firebase/database'
+
 
 Vue.config.productionTip = false;
 
 Vue.use(messagePlugin);
 Vue.use(Vuelidate);
 Vue.filter('date', dateFilter);
+Vue.filter('currency', currencyFilter());
+Vue.component('Loader', Loader);
+Vue.directive('tooltip', tooltipDirective)
 
 firebase.initializeApp( {
   apiKey: "AIzaSyCqnDXFKE-pa-ztScC1-e_urZtYmSiU5IY",
